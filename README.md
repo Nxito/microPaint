@@ -1,2 +1,2 @@
-# microPaint
- clon de microsoft paint en js
+# MicroPaint
+ Clon de paint  
