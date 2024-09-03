@@ -222,6 +222,7 @@
                 ctx.beginPath()
                 ctx.moveTo(lastX, lastY)
                 ctx.lineTo(offsetX, offsetY)
+                ctx.lineCap = 'round';
                 ctx.stroke();
                 [lastX, lastY] = [offsetX, offsetY];
             }
@@ -230,7 +231,7 @@
                 let width = offsetX - startX
                 let height = offsetY - startY
                 if (isShiftPressed) {
-                    const sideLength = Math.min(Math.abs(width),Math.abs(height))
+                    const sideLength = Math.min(Math.abs(width), Math.abs(height))
                     width = width > 0 ? sideLength : -sideLength
                     height = height > 0 ? sideLength : -sideLength
                 }
@@ -253,13 +254,23 @@
 
             ctx.clearRect(0, 0, $canvas.width, $canvas.height)
         }
-        function handleKeyDown(ev) {             
-            if (ev.key == "Shift" ) {
+        function handleKeyDown(ev) {
+            console.log(ev.key);
+            if (ev.key == "Shift") {
                 isShiftPressed = true
+            }
+            if (ev.key == "+") {
+                ctx.lineWidth++
+            }
+            if (ev.key == "-") {
+                ctx.lineWidth--
+                if (ctx.lineWidth < 1) {
+                    ctx.lineWidth = 1
+                }
             }
         }
         function handleKeyUp(ev) {
-            isShiftPressed =false
+            isShiftPressed = false
         }
         async function setMode(newMode) {
             let prevMode = mode
@@ -270,7 +281,7 @@
                 case MODES.DRAW:
                     $drawBtn.classList.add("active")
                     canvas.style.cursor = "crosshair"
-                    ctx.lineWidth = 2;
+                    ctx.lineWidth = 20;
                     break;
                 case MODES.RECTANGLE:
                     $rectangleBtn.classList.add("active")
