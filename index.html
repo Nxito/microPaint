@@ -281,7 +281,7 @@
                 case MODES.DRAW:
                     $drawBtn.classList.add("active")
                     canvas.style.cursor = "crosshair"
-                    ctx.lineWidth = 20;
+                    ctx.lineWidth = 2;
                     break;
                 case MODES.RECTANGLE:
                     $rectangleBtn.classList.add("active")
@@ -292,7 +292,7 @@
                     $eraseBtn.classList.add("active")
                     canvas.style.cursor = "url('./cursors/erase.png') 0 24, auto";
                     ctx.globalCompositeOperation = "destination-out"
-                    ctx.lineWidth = 20;
+                    ctx.lineWidth = 10;
                     break;
                 case MODES.PICKER:
                     $pickerBtn.classList.add("active")

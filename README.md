@@ -1,2 +1,2 @@
 # MicroPaint
- Clon de paint  
+ Clon simple de microsoft de paint para practicar
